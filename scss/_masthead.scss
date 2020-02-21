@@ -1,0 +1,67 @@
+// Styling for the masthead
+header.masthead {
+    position: relative;
+    padding-top: 45px;
+    width: 100%;
+    color: white;
+    background: url('../images/model.jpg') no-repeat top right;
+
+    @media (min-width: 992px) {
+				height: 700px;
+    }
+
+    @media (max-width: 575px) {
+        background-size: 80%;
+        background-position: 220% 0;
+    }
+
+    .header-content {
+        position: relative;
+    }
+
+    .product {
+        position: absolute;
+        bottom: 0;
+        right: 60px;
+        max-width: 160px;
+
+        @media (max-width: 575px) {
+            right: 0px;
+            max-width: 120px;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    h3 {
+        color: #000;
+        letter-spacing: 0;
+        font-weight: 600;
+        line-height: 1;
+        font-size: 36px;
+
+        span {
+            color:#FE5A1B;
+        }
+    }
+}
+
+label {
+    color: #000;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+.header-right {
+    @media (max-width: 575px) {
+        padding-top: 60px;
+    }
+
+    form {
+        @media (max-width: 575px) {
+            display: none;
+        }
+    }
+}

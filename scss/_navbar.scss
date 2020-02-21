@@ -1,0 +1,161 @@
+// Styling for the navbar
+#mainNav {
+    border-color: fade-out($gray-darker, .95);
+    background-color: #8916AB;
+    @include transition-all;
+    @include heading-font;
+    z-index: 1;
+
+    @media (max-width: 575px) {
+        height: 60px;
+    }
+
+    .navbar-brand {
+        color: $theme-primary;
+        padding: 0;
+        @include heading-font;
+        &:hover,
+        &:focus {
+            color: darken($theme-primary, 10%);
+        }
+
+        @media (max-width: 575px) {
+            display: block;
+            margin: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        img {
+            width: 100%;
+            max-width: 200px;
+
+            @media (max-width: 575px) {
+                max-width: 160px;
+            }
+        }
+    }
+    .navbar-toggler {
+        font-size: 12px;
+        padding: 8px 10px;
+        color: $gray-darker;
+    }
+    .navbar-nav {
+        > li {
+            > a {
+                font-size: 11px;
+                @include alt-font;
+                &.active {
+                    color: $theme-primary !important;
+                    background-color: transparent;
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+            }
+            > a,
+            > a:focus {
+                color: $gray-darker;
+                &:hover {
+                    color: $theme-primary;
+                }
+            }
+        }
+    }
+    @media (min-width: 992px) {
+        border-color: transparent;
+        background-color: #8916AB;
+        .navbar-brand {
+            color: fade(white, 70%);
+            &:hover,
+            &:focus {
+                color: white;
+            }
+        }
+        .navbar-nav > li > a,
+        .navbar-nav > li > a:focus {
+            color: fade-out(white, .3);
+            &:hover {
+                color: white;
+            }
+        }
+        &.navbar-shrink {
+            border-color: fade-out($gray-darker, .9);
+            background-color: #8916AB;
+            .navbar-brand {
+                color: $gray-darker;
+                &:hover,
+                &:focus {
+                    color: $theme-primary;
+                }
+            }
+            .navbar-nav > li > a,
+            .navbar-nav > li > a:focus {
+                color: $gray-darker;
+                &:hover {
+                    color: $theme-primary;
+                }
+            }
+        }
+    }
+}
+
+.nav-container {
+    display: flex;
+
+    @media (max-width: 575px) {
+        display: none;
+    }
+}
+
+.nav-content {
+    color: #FFF;
+    font-style: italic;
+    font-size: 22px;
+    padding-right: 30px;
+    text-align: right;
+
+    small {
+        display: block;
+        font-style: normal;
+        font-size: 14px;
+    }
+
+    span {
+        color: #1ABEEF;
+    }
+}
+
+.arrow_box {
+    position: relative;
+}
+.arrow_box:after {
+	top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    
+    @media (min-width: 576px) {
+        display: none;
+    }
+}
+
+.arrow_box:after {
+	width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 120px 0 120px;
+    border-color: #8916AB transparent transparent transparent;
+}
+
+#cta-mobile {
+    @media (min-width: 576px) {
+        display: none;
+    }
+}
