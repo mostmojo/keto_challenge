@@ -70,7 +70,7 @@
 
   var time = setInterval(function() {
     var endTime = new Date().getTime();
-    
+
     var timestamp = endTime - startTime;
     var reading_time = new Date(timestamp).getMinutes() + "min" + "" + new Date(timestamp).getSeconds() + "sec";
 
@@ -79,7 +79,7 @@
 
   //SCROLL COOKIE
   $(window).scroll(function (event) {
-    var h = document.documentElement, 
+    var h = document.documentElement,
     b = document.body,
     st = 'scrollTop',
     sh = 'scrollHeight';
@@ -107,3 +107,26 @@ function createCookie(name, value, expires) {
 
   document.cookie = cookie;
 }
+
+// /* ----------- Timer to boot the 10 minute countdown ----------- */
+
+function timerBoot(duration, display) {
+	let timer = duration;
+	let minutes;
+	let seconds;
+	setInterval(() => {
+			minutes = parseInt(timer / 60, 10);
+			seconds = parseInt(timer % 60, 10);
+			minutes = minutes < 10 ? `0${minutes}` : minutes;
+			seconds = seconds < 10 ? `0${seconds}` : seconds;
+			display.textContent = `${minutes}:${seconds}`;
+			if (--timer < 0) {
+					timer = duration;
+			}
+	}, 1000);
+}
+window.onload = () => {
+	const tenMinutes = 60 * 10;
+	const display = document.querySelector('#countdown');
+	timerBoot(tenMinutes, display);
+};
