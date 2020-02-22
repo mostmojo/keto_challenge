@@ -1,3 +1,5 @@
+// Initialize the slick slideshow plugins. Responsive breakpoints for mobile added.
+
 (function($) {
   "use strict";
 
@@ -28,6 +30,8 @@
     ]
   });
 
+	// Hide green button and show form on mobile
+
   $("#cta-mobile").click(function(e) {
     e.preventDefault();
 
@@ -35,37 +39,30 @@
     $("form").show();
   });
 
+	// Cookie value change to 'clicked' on click event
   $("#cta-button-1").click(function(e) {
     e.preventDefault();
-
     createCookie("cta_button_1", "clicked", 365);
   });
 
   $("#cta-button-2").click(function(e) {
     e.preventDefault();
-
     createCookie("cta_button_2", "clicked", 365);
   });
 
   $("#cta-button-3").click(function(e) {
     e.preventDefault();
-
     createCookie("cta_button_3", "clicked", 365);
-  });
+	});
 
+
+// Geoplugin for IP detection. It only works locally or on http. Paid version works with https.
   $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
     $("#country-id").text(data.geoplugin_countryName);
   });
 
 
-  //var time = new Date().getTime();
-  //var timestamp = (time + 3600) - time;
-  //console.log(new Date(timestamp).getHours() + "hrs");
-  //console.log(new Date(timestamp).getMinutes() + "mins");
-  //console.log(new Date(timestamp).getSeconds() + "secs");
-
-
-  //READING TIME COOKIE
+  // Reading time cookie
   var startTime = new Date().getTime();
 
   var time = setInterval(function() {
@@ -75,9 +72,18 @@
     var reading_time = new Date(timestamp).getMinutes() + "min" + "" + new Date(timestamp).getSeconds() + "sec";
 
     createCookie("time_reading", reading_time, 365);
-  }, 1000);
+	}, 1000);
 
-  //SCROLL COOKIE
+	/*
+		var time = new Date().getTime();
+		var timestamp = (time + 3600) - time;
+		console.log(new Date(timestamp).getHours() + "hrs");
+		console.log(new Date(timestamp).getMinutes() + "mins");
+		console.log(new Date(timestamp).getSeconds() + "secs");
+	*/
+
+	// Scroll cookie function
+
   $(window).scroll(function (event) {
     var h = document.documentElement,
     b = document.body,
@@ -91,6 +97,8 @@
 
 })(jQuery);
 
+// Create cookie with name, value and expiration date
+
 function createCookie(name, value, expires) {
   var cookie = name + "=" + escape(value) + ";";
 
@@ -101,14 +109,13 @@ function createCookie(name, value, expires) {
     }
     else
       expires = new Date(new Date().getTime() + parseInt(expires) * 1000 * 60 * 60 * 24);
-
     cookie += "expires=" + expires.toGMTString() + ";";
   }
 
   document.cookie = cookie;
 }
 
-// /* ----------- Timer to boot the 10 minute countdown ----------- */
+// Timer to boot the 10 minute countdown
 
 function timerBoot(duration, display) {
 	let timer = duration;
