@@ -56,7 +56,7 @@ ul.p {
     li {
         font-size: 16px;
         line-height: 1.5;
-        margin-bottom: 20px;        
+        margin-bottom: 20px;
     }
 }
 
@@ -157,7 +157,7 @@ h2 {
 		color: #073B09;
 		font-size: 16px;
     }
-    
+
     ul {
         li {
             color: #FFF;
@@ -181,6 +181,7 @@ h2 {
 	@include heading-font;
 	font-weight: 600;
 	text-align: right;
+	margin-left: 20rem;
 }
 
 .section-5 {
@@ -217,7 +218,7 @@ h2 {
         @media (max-width: 575px) {
             padding: 20px 0;
         }
-        
+
         &:last-child {
             margin-bottom: 0;
         }
