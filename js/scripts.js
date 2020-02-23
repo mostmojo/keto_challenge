@@ -1,99 +1,102 @@
 // Initialize the slick slideshow plugins. Responsive breakpoints for mobile added.
 
 (function($) {
-  "use strict";
+"use strict";
 
-  $('.one-time').slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    adaptiveHeight: true
-  });
+$('.one-time').slick({
+	dots: true,
+	infinite: true,
+	speed: 300,
+	slidesToShow: 1,
+	adaptiveHeight: true
+});
 
-  $('.slider-how-to').slick({
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    dots: false,
-    responsive: [
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true
-        }
-      }
-    ]
-  });
+$('.slider-how-to').slick({
+	dots: true,
+	infinite: true,
+	speed: 300,
+	slidesToShow: 3,
+	slidesToScroll: 3,
+	dots: false,
+	responsive: [
+		{
+			breakpoint: 767,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				dots: true
+			}
+		}
+	]
+});
 
-	// Hide green button and show form on mobile
+// Hide green button and show form on mobile
 
-  $("#cta-mobile").click(function(e) {
-    e.preventDefault();
+$("#cta-mobile").click(function(e) {
+	e.preventDefault();
 
-    $(this).hide();
-    $("form").show();
-  });
+	$(this).hide();
+	$("form").show();
+});
 
-	// Cookie value change to 'clicked' on click event
-  $("#cta-button-1").click(function(e) {
-    e.preventDefault();
-    createCookie("cta_button_1", "clicked", 365);
-  });
+// Cookie value change to 'clicked' on click event
 
-  $("#cta-button-2").click(function(e) {
-    e.preventDefault();
-    createCookie("cta_button_2", "clicked", 365);
-  });
+$("#cta-button-1").click(function(e) {
+	e.preventDefault();
+	createCookie("cta_button_1", "clicked", 365);
+});
 
-  $("#cta-button-3").click(function(e) {
-    e.preventDefault();
-    createCookie("cta_button_3", "clicked", 365);
-	});
+$("#cta-button-2").click(function(e) {
+	e.preventDefault();
+	createCookie("cta_button_2", "clicked", 365);
+});
+
+$("#cta-button-3").click(function(e) {
+	e.preventDefault();
+	createCookie("cta_button_3", "clicked", 365);
+});
 
 
 // Geoplugin for IP detection. It only works locally or on http. Paid version works with https.
-  $.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
-    $("#country-id").text(data.geoplugin_countryName);
-  });
+
+$.getJSON('http://www.geoplugin.net/json.gp?jsoncallback=?', function(data) {
+	$("#country-id").text(data.geoplugin_countryName);
+});
 
 
-  // Reading time cookie
-  var startTime = new Date().getTime();
+// Reading time cookie
 
-  var time = setInterval(function() {
-    var endTime = new Date().getTime();
+var startTime = new Date().getTime();
 
-    var timestamp = endTime - startTime;
-    var reading_time = new Date(timestamp).getMinutes() + "min" + "" + new Date(timestamp).getSeconds() + "sec";
+var time = setInterval(function() {
+	var endTime = new Date().getTime();
 
-    createCookie("time_reading", reading_time, 365);
-	}, 1000);
+	var timestamp = endTime - startTime;
+	var reading_time = new Date(timestamp).getMinutes() + "min" + "" + new Date(timestamp).getSeconds() + "sec";
 
-	/*
-		var time = new Date().getTime();
-		var timestamp = (time + 3600) - time;
-		console.log(new Date(timestamp).getHours() + "hrs");
-		console.log(new Date(timestamp).getMinutes() + "mins");
-		console.log(new Date(timestamp).getSeconds() + "secs");
-	*/
+	createCookie("time_reading", reading_time, 365);
+}, 1000);
 
-	// Scroll cookie function
+/*
+	var time = new Date().getTime();
+	var timestamp = (time + 3600) - time;
+	console.log(new Date(timestamp).getHours() + "hrs");
+	console.log(new Date(timestamp).getMinutes() + "mins");
+	console.log(new Date(timestamp).getSeconds() + "secs");
+*/
 
-  $(window).scroll(function (event) {
-    var h = document.documentElement,
-    b = document.body,
-    st = 'scrollTop',
-    sh = 'scrollHeight';
+// Scroll cookie function
 
-    var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
-    createCookie("scrolled", parseInt(percent) + "percent", 365);
-    //console.log(percent + "%");
-  });
+$(window).scroll(function (event) {
+	var h = document.documentElement,
+	b = document.body,
+	st = 'scrollTop',
+	sh = 'scrollHeight';
+
+	var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+	createCookie("scrolled", parseInt(percent) + "percent", 365);
+	//console.log(percent + "%");
+});
 
 })(jQuery);
 
